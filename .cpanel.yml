@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/dfoxmediadigital//public_html/demo/radhaseeds
+    - /bin/cp * $DEPLOYPATH
