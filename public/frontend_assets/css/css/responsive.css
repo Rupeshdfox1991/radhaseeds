@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+/* CSS Document */
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 992px) and (max-width: 1200px) {  
+
+
+}
+
+/* width: 991px; */
+
+@media screen and (max-width: 61.938em) {
+.footer-pane .footer-first{display: block;}
+.footer-pane .footer-first .footer-abt{width: 100%; padding: 40px 15px 0px 15px;}
+.footer-pane .footer-first .quick-links{width: 100%; padding: 40px 15px 0px 15px;}
+.footer-pane .copy-right{display: block; padding: 8px 15px;}
+.title-blk-center h2{font-size: 25px;}
+.title-blk-center h2 span{font-size: 12px;}
+.desktop-banner{display: none;}
+.header-top{display: none;}
+.mobile-banner{display: block;}
+.home-abt:after{display: none;}
+.vision-mission{display: block;}
+.vision-mission .vm-content{width: 100%;}
+.vision-mission .bg1{padding: 30px 15px;}
+.vision-mission .bg2{padding: 30px 15px;}
+.about-first .four-box-content .box-wrapper{display: block;}
+.about-first .four-box-content .box-wrapper .box:nth-child(2){border-top: 1px solid rgba(38, 43, 52, 0.15); border-bottom: 1px solid rgba(38, 43, 52, 0.15); border-right: 0px !important; border-left: 0px !important;}
+.about-first .four-box-content .box-wrapper .box:nth-child(3) {border-bottom: 1px solid rgba(38, 43, 52, 0.15); border-right: 0px;}
+.about-first .four-box-content .box-wrapper .box {padding: 30px 0px;}
+.about-first p{font-size: 16px; line-height: 30px;}
+}
+
+/*============	Media 768Px Start ============ */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+
+@media (min-width: 320px) and (max-width: 768px) {
+
+
+
+}
+
+@media (min-width: 768px) {
+
+
+
+}
+
+
+
+/*============ Media 300Px Star ============ */
+
+@media (max-width: 480px) {
+
+
+
+}
+
+/*============ Media 320Px Start ============ */
+
+@media (max-width: 320px) {
+
+}
