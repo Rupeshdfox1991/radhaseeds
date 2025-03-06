@@ -30,13 +30,13 @@
                             <h3 class="card-title">Product Category Details</h3>
                         </div>
                         @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
 
                         @endif
                         <hr>
@@ -54,7 +54,7 @@
 
                                 <div class="row col-md-12">
                                     <div class="form-group col-md-4 mb-3">
-                                        <label for="exampleInputFile">Product Category Image (400x485 pixels)</label>
+                                        <label for="exampleInputFile">Product Category Image (800x967 pixels)</label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="exampleInputFile"
@@ -147,82 +147,57 @@
 
 @include('admin/include/js')
 <script>
-function previewImage(input) {
-    var preview = document.getElementById('imagePreview');
-    var file = input.files[0];
-    var reader = new FileReader();
+    function previewImage(input) {
+        var preview = document.getElementById('imagePreview');
+        var file = input.files[0];
+        var reader = new FileReader();
 
-    reader.onloadend = function() {
-        var img = new Image();
-        img.src = reader.result;
+        reader.onloadend = function () {
+            var img = new Image();
+            img.src = reader.result;
 
-        img.onload = function() {
-            // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 400 && img.height === 485) {
-                preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
-            } else {
-                Swal.fire('Please upload an image with dimensions 400x485 pixels.');
-                // Reset the file input
-                input.value = '';
-                preview.innerHTML = '';
-            }
+            img.onload = function () {
+                // Check if the uploaded image dimensions match the required size (100x100 pixels)
+                if (img.width === 800 && img.height === 967) {
+                    preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
+                } else {
+                    Swal.fire('Please upload an image with dimensions 800x967 pixels.');
+                    // Reset the file input
+                    input.value = '';
+                    preview.innerHTML = '';
+                }
+            };
         };
-    };
 
-    if (file) {
-        reader.readAsDataURL(file);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
-}
 
-function previewImage1(input) {
-    var preview = document.getElementById('imagePreview1');
-    var file = input.files[0];
-    var reader = new FileReader();
 
-    reader.onloadend = function() {
-        var img = new Image();
-        img.src = reader.result;
 
-        img.onload = function() {
-            // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 500 && img.height === 345) {
-                preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
-            } else {
-                Swal.fire('Please upload an image with dimensions 500x345 pixels.');
-                // Reset the file input
-                input.value = '';
-                preview.innerHTML = '';
-            }
-        };
-    };
+    $('#addProductCategory').validate({
+        rules: {
+            // Define validation rules for your form fields
+            name: {
+                required: true,
+                // Add other validation rules as needed
+            },
 
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
-
-$('#addProductCategory').validate({
-    rules: {
-        // Define validation rules for your form fields
-        name: {
-            required: true,
-            // Add other validation rules as needed
         },
+        messages: {
+            // Define error messages for your form fields
+            name: {
+                required: "Please enter product Category title",
+                // Add other error messages as needed
+            },
 
-    },
-    messages: {
-        // Define error messages for your form fields
-        name: {
-            required: "Please enter product Category title",
-            // Add other error messages as needed
         },
-
-    },
-    submitHandler: function(form) {
-        // If form is valid, submit it
-        form.submit();
-    }
-});
+        submitHandler: function (form) {
+            // If form is valid, submit it
+            form.submit();
+        }
+    });
 </script>
 </body>
 

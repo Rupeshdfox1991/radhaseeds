@@ -2,139 +2,125 @@
 @section('title', 'Contact-us')
 @section('content')
 
-<section class="internal-banners"
-    style="background-image:url({{ asset('frontend_assets/images/contact-breadcrumb-bg.jpg') }});">
+<section class="internal-banners" style="background: url({{ asset('frontend_assets/images/internal-banner.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <h2>Contact Us</h2>
+                <h3>Contact us</h3>
                 <div class="breadcrumb-pane">
                     <ul>
                         <li><a href="{{ url('/') }}">Home</a></li>
-                        <li>Contact Us</li>
+                        <li>Contact us</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="contact-first">
+
+<section class="contact-us-section">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <div class="title-blk-center">
-                    <h2>Get in touch</h2>
-                </div>
-                <p>Have questions or need more information? Our team is ready to help you every step of the way. Contact
-                    us today via phone, email, or the form below, and we'll get back to you as soon as possible.</p>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+            <div class="title-main">
+                <h2>Connect with Us</h2>
+                <p>Our experts are ready to assist you with <strong> personalized solutions and expert
+                        guidance</strong>. Whether you have questions, need support, or want to explore our offerings,
+                    we’re here to help. Reach out to us via <strong> phone, email, or the contact form</strong>, and
+                    we’ll get back to you promptly!</p>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xl-6">
-                <div class="map-sec">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.4281602464625!2d73.79260907427756!3d20.032501121251528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeba961191f75%3A0xbfa7ce35d9b214b0!2sVraj%20Life%20Space!5e0!3m2!1sen!2sin!4v1726127252589!5m2!1sen!2sin"
-                        width="100%" height="505" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xl-6">
-                <div class="contact-address">
-                    <div class="info">
-                        <div class="img-sec"><img src="{{ asset('frontend_assets/images/contact-icon-1.png') }}"></div>
-                        <div class="content-sec">Admin Offc. 303, A Wing, 3rd Floor, vajra Life Space Complex, Opposite
-                            RTO. Office, Peth Road, Nashik, Maharashtra. Pin - 422004</div>
-                    </div>
-                    <div class="info">
-                        <div class="img-sec"><img src="{{ asset('frontend_assets/images/contact-icon-2.png') }}"></div>
-                        <div class="content-sec">
-                            <h4>Send us a message</h4>
-                            agrohitechc3@gmail.com
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="img-sec"><img src="{{ asset('frontend_assets/images/contact-icon-3.png') }}"></div>
-                        <div class="content-sec">
-                            <h4>Give us a call</h4>
-                            +91 94228 75726
-                        </div>
-                    </div>
-                </div>
+            <div class="mapdiv">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7496.856564815996!2d73.795184!3d20.032496!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeba961191f75%3A0xbfa7ce35d9b214b0!2sVraj%20Life%20Space!5e0!3m2!1sen!2sin!4v1741164494328!5m2!1sen!2sin"
+                    width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
 </section>
-<section class="contact-form">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-12 col-xl-8 offset-xl-2">
-                <div class="col-md-6 offset-md-3">
-                    @include('flash_data')
-                    @if($errors->any())
-                    @error('g-recaptcha-response')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
 
-                    @endif
+<!-- second section -->
+<section class="contact-us-second">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xl-5">
+                <div class="contact-iconsec">
+                    <div class="icondiv">
+                        <img src="{{ asset('frontend_assets/images/location-icon.png') }}" alt="">
+                    </div>
+                    <div class="textdiv">
+                        <p>Admin Offc. 303, A Wing, 3rd Floor, vajra Life Space Complex, Opposite RTO. Office, Peth
+                            Road, Nashik, Maharashtra. Pin - 422004</p>
+
+                    </div>
                 </div>
-                <div class="contact-page-form">
-                    <form id="contactForm" action="{{ route('contact-submit') }}" method="post">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputFirstName">Full Name<span>*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" required="">
+
+                <div class="contact-iconsec">
+                    <div class="icondiv">
+                        <img src="{{ asset('frontend_assets/images/message-icon.png') }}" alt="">
+                    </div>
+                    <div class="textdiv">
+                        <h3>Send us a message</h3>
+                        <a href="mailto:agrohitechc3@gmail.com">agrohitechc3@gmail.com </a>
+                    </div>
+                </div>
+
+                <div class="contact-iconsec">
+                    <div class="icondiv">
+                        <img src="{{ asset('frontend_assets/images/phone.png')}}" alt="">
+                    </div>
+                    <div class="textdiv">
+                        <h3>Give us a call</h3>
+                        <a href="tel:9422875726">+91 94228 75726</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xl-7">
+                <div class="second">
+                    <div class="form-container">
+                        <form id="contactForm" action="{{ route('contact-submit') }}" method="post">
+                            @csrf
+                            <div>
+                                <label for="first-name">Full Name</label>
+                                <input type="text" id="name" name="name" required="">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail">Email Address:<span>*</span></label>
-                                <input type="email" class="form-control" id="email" name="email"
+
+                            <div>
+                                <label for="email-add">Email Address</label>
+                                <input type="email" id="email" name="email"
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="">
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="inputContact">Contact No.<span>*</span></label>
-                                <input type="test" class="form-control" id="phone" name="phone" required="">
+                            <div>
+                                <label for="contact">Contact No.</label>
+                                <div class="contact-container">
+                                    <input type="tel" id="contact_phone" name="phone" required="">
+                                </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="inputReference">Products:<span>*</span></label>
-                                <select name="product" id="product" class="form-control form-select">
+                            <div>
+                                <label for="products">Products</label>
+                                <select id="product" name="product" required>
                                     @foreach ($productData as $value)
                                     <option value="{{ $value->product_name }}">{{ $value->product_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputcomment">Comments<span>*</span></label>
-                                <textarea class="form-control" id="comment" rows="8" name="comment" maxlength="500"
-                                    data-gramm="false" wt-ignore-input="true"></textarea>
+
+                            <div class="full-width">
+                                <label for="comments">Comments</label>
+                                <textarea id="comment" rows="4" name="comment"></textarea>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha"
-                                    id="hiddenRecaptcha" required>
-                                <div id="g-recaptcha" class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"
-                                    data-callback="correctCaptcha">
-                                </div>
-                                <label id="hiddenRecaptcha-error" class="error" for="hiddenRecaptcha"></label>
+                            <div class="full-width button-container">
+                                <button type="submit">Submit</button>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn-form-submit btn swingimage">Submit</button>
+                            <input type="hidden" name="recaptcha_token" id="recaptcha-token">
+                            @if ($errors->has('recaptcha'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('recaptcha') }}
                             </div>
-                        </div>
-                    </form>
+                            @endif
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,7 +174,44 @@ $(document).ready(function() {
         }
     });
 });
+// Initialize the plugin on the correct phone input
+
+var input = document.querySelector("#contact_phone");
+var iti = window.intlTelInput(input, {
+    separateDialCode: true,
+    excludeCountries: ["pk", "bd"],
+    preferredCountries: ["in", "us", "ae", "ca"],
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+});
+
+// Listen for form submission
+const form = document.querySelector('form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Update hidden input with selected country code
+    const countryCode = iti.getSelectedCountryData().dialCode;
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'country_code';
+    hiddenInput.value = countryCode;
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+});
 </script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('{{ env("RECAPTCHA_SITE_KEY") }}', {
+        action: 'submitContactForm'
+    }).then(function(token) {
+        // You can pass the token in a hidden input field or send it via AJAX
+        document.getElementById('recaptcha-token').value = token;
+    });
+});
+</script>
+
 @endpush
 @endsection

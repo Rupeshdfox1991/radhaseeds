@@ -1,8 +1,9 @@
 // JavaScript Document
 
+
 (function ($) {
   "use strict";
-
+  
 
   var wind = $(window);
     var sticky = $('.header');
@@ -27,6 +28,8 @@
     $("html, body").animate({ scrollTop: "0" },  1000);
   });
   
+
+  
   
   //counter home page
 	
@@ -44,66 +47,71 @@
         });
     });	
 
-	
-	
-	// home ourclients script
-	$(".home-testimonials .owl-carousel").owlCarousel({
-        loop: true,
-        margin: 15,
-        responsiveClass: true,
-        autoplay: true,
-        smartSpeed: 1200,
-        navText: ['<i class="fa fa-long-arrow-left" aria-hidden="true"></i>', '<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'],
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-		dots: false,
-        navigation: true,
-        responsive: {
-            0: {
-                items: 1,
-                nav: true,
-            },
-            600: {
-                items: 1,
-                nav: true,
-            },
-            1000: {
-                items: 3,
-                nav: true,
-                loop: true,
-            },
-        },
-    });
+    
 
-    $(".home-certi .owl-carousel").owlCarousel({
-        loop: true,
-        margin: 15,
-        responsiveClass: true,
-        autoplay: true,
-        smartSpeed: 1200,
-        navText: ['<i class="fa fa-long-arrow-left" aria-hidden="true"></i>', '<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'],
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        dots: false,
-        navigation: true,
-        responsive: {
-            0: {
-                items: 1,
-                nav: true,
-            },
-            600: {
-                items: 1,
-                nav: true,
-            },
-            1000: {
-                items: 4,
-                nav: true,
-                loop: true,
-            },
-        },
-    });
-	
+    $('.rudraksha-collection-slider').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      prevArrow:'<button class="prev-arrow"></button>',
+      nextArrow:'<button class="next-arrow"></button>',
+      responsive: [
+          {
+              breakpoint: 768,
+              settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+              }
+          }
+      ]
+  });
 
+    $('.combination-slider').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      prevArrow:'<button class="prev-arrow"></button>',
+      nextArrow:'<button class="next-arrow"></button>',
+      responsive: [
+          {
+              breakpoint: 768,
+              settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+              }
+          }
+      ]
+  });
+
+
+	$('.testimonials-slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow:'<button class="prev-arrow"></button>',
+        nextArrow:'<button class="next-arrow"></button>',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
 
 
 $('[data-fancybox]').fancybox({
@@ -121,7 +129,10 @@ $('[data-fancybox]').fancybox({
         });
 
 
-
+        
   
 
 })(jQuery);
+
+
+

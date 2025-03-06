@@ -26,8 +26,7 @@
     }
 
     header {
-        background: linear-gradient(to right, #007bff, #00c49a);
-        /*            background: -webkit-linear-gradient(to right, #007bff, #00c49a);*/
+        background: #00c49a;
         color: #ffffff;
         padding: 20px 0;
         text-align: center;
@@ -50,8 +49,7 @@
     }
 
     footer {
-        background: linear-gradient(to right, #007bff, #00c49a);
-        /*            background: -webkit-linear-gradient(to right, #007bff, #00c49a);*/
+        background: #00c49a;
         color: #ffffff;
         padding: 10px 0;
         text-align: center;
@@ -82,14 +80,14 @@
         <p>We are here to assist you and guide you through every step of your journey with us.</p>
 
         <p>Thanks,</p>
-        <p>Team Agro Hi-tech Chemicals</p>
+        <p>Team Radha Seeds</p>
 
-        <p>Website: <a href="https://www.agrohitechchemicals.com">https://www.agrohitechchemicals.com</a></p>
+        <p>Website: <a href="https://www.radhaseeds.com">https://www.radhaseeds.com</a></p>
     </div>
 
     <footer>
         <div class="container">
-            <p><strong>&copy; {{ date('Y') }} Agro Hi-tech Chemicals</strong></p>
+            <p><strong>&copy; {{ date('Y') }} Radha Seeds</strong></p>
         </div>
     </footer>
 

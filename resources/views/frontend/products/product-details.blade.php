@@ -2,12 +2,11 @@
 @section('title', 'Product Details')
 @section('content')
 
-<section class="internal-banners"
-    style="background-image:url({{ asset('frontend_assets/images/gallery-breadcrumb-bg.jpg')}});">
+<section class="internal-banners" style="background: url({{ asset('frontend_assets/images/internal-banner.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <h2>{{ $productDetails->product_name}}</h2>
+                <h3>{{ $productDetails->product_name}}</h3>
                 <div class="breadcrumb-pane">
                     <ul>
                         <li><a href="{{ url('/') }}">Home</a></li>
@@ -25,29 +24,18 @@
 <section class="product-details">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-12 col-sm-12 col-xl-5">
-                <div class="img-section"><img src="{{ asset('product-images') . '/' . $productDetails->image }}"></div>
+            <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <div class="detail-img"><img src="{{ asset('product-images') . '/' . $productDetails->image }}"></div>
             </div>
-            <div class="col-lg-7 col-md-12 col-sm-12 col-xl-7">
-                <div class="content-sec">
-                    <h2>{{ $productDetails->product_name}}</h2>
+            <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <div class="detail-content">
+                    <h3>{{ $productDetails->product_name}}</h3>
                     <p>{!!$productDetails->product_desc !!}</p>
-                    <p>
-                        <strong>SKU:</strong> {{ $productDetails->product_code}}
-                    </p>
-                    <div class="size">
-                        <h4>Available in Size</h4>
-                        <ul>
-                            <li>1 Ltr.</li>
-                            <li>1.5 Ltr.</li>
-                            <li>2 Ltr.</li>
-                            <li>2.5 Ltr.</li>
-                        </ul>
-                    </div>
-                    <a class="btn-form-submit btn addproduct" href="{{ route('contact-us')}}">Request A Quote!</a>
+                    <a href="{{ route('contact-us')}}" class="addproduct">Enquire Now</a>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 @push('scripts')

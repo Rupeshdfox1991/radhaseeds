@@ -1,12 +1,12 @@
 @include('admin/include/header')
 <style>
-#exampleInputFile-error {
-    margin-top: 100px;
-}
+    #exampleInputFile-error {
+        margin-top: 100px;
+    }
 
-#exampleInputFile1-error {
-    margin-top: 100px;
-}
+    #exampleInputFile1-error {
+        margin-top: 100px;
+    }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -39,13 +39,13 @@
                             <h3 class="card-title">Edit Product Details</h3>
                         </div>
                         @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
 
                         @endif
                         <hr>
@@ -67,10 +67,10 @@
                                     <select class="form-control select2" id="pro_cat_id" name="pro_cat_id"
                                         style="width: 100%;">
                                         @foreach($ProductCategorys as $productcategory)
-                                        <option value="{{ $productcategory->id }}"
-                                            {{($productcategory->id == $productData->pro_cat_id) ? "selected" : ""}}>
-                                            {{ $productcategory->name }}
-                                        </option>
+                                            <option value="{{ $productcategory->id }}"
+                                                {{($productcategory->id == $productData->pro_cat_id) ? "selected" : ""}}>
+                                                {{ $productcategory->name }}
+                                            </option>
                                         @endforeach
 
                                     </select>
@@ -90,7 +90,7 @@
 
                                 <div class="row col-md-12">
                                     <div class="form-group col-md-4 mb-3">
-                                        <label for="exampleInputFile">Product Image (400x485 pixels)<span
+                                        <label for="exampleInputFile">Product Image (800x967 pixels)<span
                                                 class="text-danger">*</span></label>
                                         <div class="input-group">
                                             <div class="custom-file">
@@ -146,7 +146,7 @@
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" value="Yes" name="for_home"
                                             id="exampleCheck1" @if($productData->for_home == 'Yes') {{ 'checked' }}
-                                        @endif>
+                                            @endif>
                                         <label class="form-check-label" for="exampleCheck1">For Home Page</label>
                                     </div>
                                 </div>
@@ -197,189 +197,189 @@
 
 @include('admin/include/js')
 <script>
-function previewImage(input) {
-    var preview = document.getElementById('imagePreview');
-    var file = input.files[0];
-    var reader = new FileReader();
+    function previewImage(input) {
+        var preview = document.getElementById('imagePreview');
+        var file = input.files[0];
+        var reader = new FileReader();
 
-    reader.onloadend = function() {
-        var img = new Image();
-        img.src = reader.result;
+        reader.onloadend = function () {
+            var img = new Image();
+            img.src = reader.result;
 
-        img.onload = function() {
-            // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 400 && img.height === 485) {
-                preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
-            } else {
-                Swal.fire('Please upload an image with dimensions 400x485 pixels.');
-                // Reset the file input
-                input.value = '';
-                preview.innerHTML = '';
-            }
-        };
-    };
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
-
-
-
-$(document).ready(function() {
-
-    //multiselect
-    $('#pro_cat_id').select2({
-        placeholder: 'Select product  category',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_subcat_id').select2({
-        placeholder: 'Select product subcategory',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_material_filt_id').select2({
-        placeholder: 'Select material filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_shape_filt_id').select2({
-        placeholder: 'Select shape filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_capacity_volume_filt_id').select2({
-        placeholder: 'Select capacity/volume filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_necksize_filt_id').select2({
-        placeholder: 'Select neck size filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_producttype_filt_id').select2({
-        placeholder: 'Select product type filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-    $('#pro_market_filt_id').select2({
-        placeholder: 'Select market filter',
-        allowClear: true,
-        closeOnSelect: true
-    });
-
-
-
-    $('#pro_cat_id').on('change', function(evt) {
-        // var pro_cat_id = $(this).val();
-        var pro_cat_id = $(evt.target).val();
-        let slectedSubcat = $('#pro_subcat_selected_value').val();
-
-        $.ajax({
-            url: "{{ url('/admin/getproductsubcategory') }}/" + pro_cat_id,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.length > 0) {
-                    $('#pro_subcat_id').empty(); // Clear previous options
-
-                    $.each(response, function(index, item) {
-                        let selected = (item.id == slectedSubcat) ? "selected" : "";
-                        $('#pro_subcat_id').append('<option value="' + item.id +
-                            '"  ' + selected + '>' + item.name + '</option>');
-                    });
+            img.onload = function () {
+                // Check if the uploaded image dimensions match the required size (100x100 pixels)
+                if (img.width === 800 && img.height === 967) {
+                    preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
                 } else {
-                    $('#pro_subcat_id').empty();
+                    Swal.fire('Please upload an image with dimensions 800x967 pixels.');
+                    // Reset the file input
+                    input.value = '';
+                    preview.innerHTML = '';
                 }
+            };
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+
+    $(document).ready(function () {
+
+        //multiselect
+        $('#pro_cat_id').select2({
+            placeholder: 'Select product  category',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_subcat_id').select2({
+            placeholder: 'Select product subcategory',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_material_filt_id').select2({
+            placeholder: 'Select material filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_shape_filt_id').select2({
+            placeholder: 'Select shape filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_capacity_volume_filt_id').select2({
+            placeholder: 'Select capacity/volume filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_necksize_filt_id').select2({
+            placeholder: 'Select neck size filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_producttype_filt_id').select2({
+            placeholder: 'Select product type filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+        $('#pro_market_filt_id').select2({
+            placeholder: 'Select market filter',
+            allowClear: true,
+            closeOnSelect: true
+        });
+
+
+
+        $('#pro_cat_id').on('change', function (evt) {
+            // var pro_cat_id = $(this).val();
+            var pro_cat_id = $(evt.target).val();
+            let slectedSubcat = $('#pro_subcat_selected_value').val();
+
+            $.ajax({
+                url: "{{ url('/admin/getproductsubcategory') }}/" + pro_cat_id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.length > 0) {
+                        $('#pro_subcat_id').empty(); // Clear previous options
+
+                        $.each(response, function (index, item) {
+                            let selected = (item.id == slectedSubcat) ? "selected" : "";
+                            $('#pro_subcat_id').append('<option value="' + item.id +
+                                '"  ' + selected + '>' + item.name + '</option>');
+                        });
+                    } else {
+                        $('#pro_subcat_id').empty();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText); // Log the response text
+                }
+            });
+        }).change();
+
+        $('#addProductForm').validate({
+            rules: {
+                // Define validation rules for your form fields
+                product_name: {
+                    required: true,
+                    // Add other validation rules as needed
+                },
+                product_code: {
+                    required: true,
+                },
+                pro_cat_id: {
+                    required: true,
+
+                },
+                pro_subcat_id: {
+                    required: true,
+
+                },
+                image: {
+                    required: true,
+                },
+                pro_material_filt_id: {
+                    required: true,
+                },
+                pro_shape_filt_id: {
+                    required: true,
+                },
+                pro_capacity_volume_filt_id: {
+                    required: true,
+                },
+                pro_necksize_filt_id: {
+                    required: true,
+                },
+                pro_market_filt_id: {
+                    required: true,
+                },
             },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText); // Log the response text
+            messages: {
+                // Define error messages for your form fields
+                product_name: {
+                    required: "Please enter product title",
+                    // Add other error messages as needed
+                },
+                product_code: {
+                    required: "Please enter product code",
+                },
+                pro_cat_id: {
+                    required: "Please select product category",
+                },
+                pro_subcat_id: {
+                    required: "Please select product subcategory",
+                },
+                image: {
+                    required: "Please select image",
+                },
+                pro_material_filt_id: {
+                    required: "Please select material filter",
+                },
+                pro_shape_filt_id: {
+                    required: "Please select shape filter",
+                },
+                pro_capacity_volume_filt_id: {
+                    required: "Please select capacity volume filter",
+                },
+                pro_necksize_filt_id: {
+                    required: "Please select necksize filter",
+                },
+                pro_market_filt_id: {
+                    required: "Please select market filter",
+                },
+
+            },
+            submitHandler: function (form) {
+                // If form is valid, submit it
+                form.submit();
             }
         });
-    }).change();
-
-    $('#addProductForm').validate({
-        rules: {
-            // Define validation rules for your form fields
-            product_name: {
-                required: true,
-                // Add other validation rules as needed
-            },
-            product_code: {
-                required: true,
-            },
-            pro_cat_id: {
-                required: true,
-
-            },
-            pro_subcat_id: {
-                required: true,
-
-            },
-            image: {
-                required: true,
-            },
-            pro_material_filt_id: {
-                required: true,
-            },
-            pro_shape_filt_id: {
-                required: true,
-            },
-            pro_capacity_volume_filt_id: {
-                required: true,
-            },
-            pro_necksize_filt_id: {
-                required: true,
-            },
-            pro_market_filt_id: {
-                required: true,
-            },
-        },
-        messages: {
-            // Define error messages for your form fields
-            product_name: {
-                required: "Please enter product title",
-                // Add other error messages as needed
-            },
-            product_code: {
-                required: "Please enter product code",
-            },
-            pro_cat_id: {
-                required: "Please select product category",
-            },
-            pro_subcat_id: {
-                required: "Please select product subcategory",
-            },
-            image: {
-                required: "Please select image",
-            },
-            pro_material_filt_id: {
-                required: "Please select material filter",
-            },
-            pro_shape_filt_id: {
-                required: "Please select shape filter",
-            },
-            pro_capacity_volume_filt_id: {
-                required: "Please select capacity volume filter",
-            },
-            pro_necksize_filt_id: {
-                required: "Please select necksize filter",
-            },
-            pro_market_filt_id: {
-                required: "Please select market filter",
-            },
-
-        },
-        submitHandler: function(form) {
-            // If form is valid, submit it
-            form.submit();
-        }
-    });
 
 
-})
+    })
 </script>
 </body>
 

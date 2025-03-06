@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blogs;
-
 use App\Models\Careers;
 use App\Models\Products;
 use App\Models\Product_category;
@@ -15,8 +14,8 @@ use App\Mail\ContactFormMail;
 use App\Mail\CareersFormMail;
 use App\Mail\ThankYouMail;
 use App\Mail\ThankYouForCareersFormMail;
-
-
+use Validator;
+use GuzzleHttp\Client;
 
 
 class SiteController extends Controller
@@ -24,7 +23,7 @@ class SiteController extends Controller
     public function index()
     {
 
-        $productData = Products::where(['is_active' => 1, 'for_home' => 'Yes'])->orderBy('id', 'desc')->take(4)->get();
+        $productData = Products::where(['is_active' => 1, 'for_home' => 'Yes'])->orderBy('id', 'desc')->take(3)->get();
         $blogs = Blogs::where(['is_active' => 1, 'for_home' => 'Yes'])->orderBy('id', 'desc')->take(3)->get();
 
         return view('frontend.home', compact('productData', 'blogs'));
@@ -64,7 +63,12 @@ class SiteController extends Controller
     {
         $blog = Blogs::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.blogs.blog-details', compact('blog'));
+        $popularPosts = Blogs::where('is_active', '=', 1)
+            ->where('slug', '!=', $slug) // Exclude the current blog
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('frontend.blogs.blog-details', compact('blog', 'popularPosts'));
     }
 
     public function careers()
@@ -74,11 +78,9 @@ class SiteController extends Controller
 
     public function submitCareersForm(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());
-        // exit;
+
         // Validate the form inputs, including reCAPTCHA
-        $request->validate([
+        $valid = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => [
@@ -91,26 +93,51 @@ class SiteController extends Controller
             'country_code' => 'required',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
             'file' => 'required|file|max:20000|mimes:pdf,doc,docx',
-            'g-recaptcha-response' => 'required|recaptcha',
         ]);
 
         // If validation passes, proceed with the rest of your logic
+        // If validation passes, proceed with the rest of your logic
+        $client = new Client();
 
-        // Send email
-        $data = [
-            'name' => $request->input('first_name') . $request->input('last_name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone') . $request->input('country_code'),
-            'message' => $request->input('comment'),
-            'file' => $request->file('file'),
-        ];
+        // Get the token from the form input
+        $recaptchaToken = $request->input('recaptcha_token');
+
+        // Verify the token with Google
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => env('RECAPTCHA_SECRET_KEY'),
+                'response' => $recaptchaToken,
+            ]
+        ]);
+
+        $body = json_decode($response->getBody()->getContents());
+
+        if (!$body->success || $body->score < 0.5) {
+            // The verification failed or the score is too low
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA validation failed. Please try again.']);
+        }
+
+        if ($valid->fails()) {
+
+            // If validation fails, redirect back to the form with errors and old input data
+            return redirect()->back()->withErrors($valid)->withInput();
+        } else {
+            // Send email
+            $data = [
+                'name' => $request->input('first_name') . $request->input('last_name'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('country_code') . $request->input('phone'),
+                'message' => $request->input('comment'),
+                'file' => $request->file('file'),
+            ];
 
 
-        Mail::to('rupesh@dfoxmediadigital.com')->bcc('rupesh@dfoxmediadigital.com')->send(new CareersFormMail($data));
-        // Send thank-you email to the user
-        Mail::to($data['email'])->send(new ThankYouForCareersFormMail($data));
+            Mail::to('rupeshdfoxmedia@gmail.com')->bcc('rupeshdfoxmedia@gmail.com')->send(new CareersFormMail($data));
+            // Send thank-you email to the user
+            Mail::to($data['email'])->send(new ThankYouForCareersFormMail($data));
 
-        return redirect()->route('thank-you')->with('success', 'Message sent successfully!');
+            return redirect()->route('thank-you')->with('success', 'Message sent successfully!');
+        }
     }
 
 
@@ -123,8 +150,7 @@ class SiteController extends Controller
     public function submitContactForm(Request $request)
     {
         // dd($request->all());
-        // Validate the form inputs, including reCAPTCHA
-        $request->validate([
+        $valid = Validator::make($request->all(), [
             'name' => 'required',
             'email' => [
                 'required',
@@ -136,30 +162,52 @@ class SiteController extends Controller
             'country_code' => 'required',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
             'product' => 'required',
-            'comment' => 'required|string',
-            'g-recaptcha-response' => 'required|recaptcha',
-
+            'comment' => 'required|string'
         ]);
 
 
         // If validation passes, proceed with the rest of your logic
+        $client = new Client();
 
-        // Send email
-        $data = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('country_code') . $request->input('phone'),
-            'product' => $request->input('product'),
-            'message' => $request->input('comment'),
-        ];
+        // Get the token from the form input
+        $recaptchaToken = $request->input('recaptcha_token');
 
-        Mail::to('rupesh@dfoxmediadigital.com')->bcc('rupesh@dfoxmediadigital.com')->send(new ContactFormMail($data));
+        // Verify the token with Google
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => env('RECAPTCHA_SECRET_KEY'),
+                'response' => $recaptchaToken,
+            ]
+        ]);
+
+        $body = json_decode($response->getBody()->getContents());
+
+        if (!$body->success || $body->score < 0.5) {
+            // The verification failed or the score is too low
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA validation failed. Please try again.']);
+        }
+
+        if ($valid->fails()) {
+            // If validation fails, redirect back to the form with errors and old input data
+            return redirect()->back()->withErrors($valid)->withInput();
+        } else {
+            // Send email
+            $data = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('country_code') . $request->input('phone'),
+                'product' => $request->input('product'),
+                'message' => $request->input('comment'),
+            ];
+
+            Mail::to('rupeshdfoxmedia@gmail.com')->bcc('rupeshdfoxmedia@gmail.com')->send(new ContactFormMail($data));
 
 
-        // Send thank-you email to the user
-        Mail::to($data['email'])->send(new ThankYouMail($data));
+            // Send thank-you email to the user
+            Mail::to($data['email'])->send(new ThankYouMail($data));
 
-        return redirect()->route('thank-you')->with('success', 'Message sent successfully!');
+            return redirect()->route('thank-you')->with('success', 'Message sent successfully!');
+        }
     }
 
 

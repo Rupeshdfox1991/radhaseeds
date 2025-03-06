@@ -2,12 +2,11 @@
 @section('title', 'Contact-us')
 @section('content')
 
-<section class="internal-banners"
-    style="background-image:url({{ asset('frontend_assets/images/contact-breadcrumb-bg.jpg') }});">
+<section class="internal-banners" style="background: url({{ asset('frontend_assets/images/internal-banner.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <h2>Thank You</h2>
+                <h3>Thank You</h3>
                 <div class="breadcrumb-pane">
                     <ul>
                         <li><a href="{{ url('/') }}">Home</a></li>
@@ -34,7 +33,7 @@
                     <p>We are here to assist you and guide you through every step of your journey with us.</p>
 
                     <p>Thanks,</p>
-                    <p>Team Agro Hi-tech Chemicals</p>
+                    <p>Team Radha Seeds</p>
 
                 </div>
             </div>

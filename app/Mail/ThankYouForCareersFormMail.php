@@ -30,7 +30,7 @@ class ThankYouForCareersFormMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Thank You for Your Interest in Agro Hi-Techchemicals !')
+        return $this->subject('Thank You for Your Interest in Radha Seeds !')
             ->view('emails.thank-you-careers-form');
     }
 }

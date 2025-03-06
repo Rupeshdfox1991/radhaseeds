@@ -71,7 +71,7 @@
 
                                     <div class="form-group col-md-12 mb-3">
                                         <label for="exampleInputFile">Image<span class="error">*</span>
-                                            (600x376 pixels)</label>
+                                            (800x600 pixels)</label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <!-- <input type="file" class="custom-file-input" id="exampleInputFile"
@@ -121,10 +121,10 @@ function previewImage(input) {
 
         img.onload = function() {
             // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 600 && img.height === 376) {
+            if (img.width === 800 && img.height === 600) {
                 preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
             } else {
-                Swal.fire('Please upload an image with dimensions 600x376 pixels.');
+                Swal.fire('Please upload an image with dimensions 800x600 pixels.');
                 // Reset the file input
                 input.value = '';
                 preview.innerHTML = '';

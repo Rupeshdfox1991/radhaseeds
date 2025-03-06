@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You for Your Interest in Joining AB Consulting.!</title>
+    <title>Thank You for Your Interest in Joining Radha Seeds.!</title>
     <style>
     body {
         font-family: 'Arial', sans-serif;
@@ -26,8 +26,7 @@
     }
 
     header {
-        background: linear-gradient(to right, #007bff, #00c49a);
-        /*            background: -webkit-linear-gradient(to right, #007bff, #00c49a);*/
+        background: #00c49a;
         color: #ffffff;
         padding: 20px 0;
         text-align: center;
@@ -50,8 +49,7 @@
     }
 
     footer {
-        background: linear-gradient(to right, #007bff, #00c49a);
-        /*            background: -webkit-linear-gradient(to right, #007bff, #00c49a);*/
+        background: #00c49a;
         color: #ffffff;
         padding: 10px 0;
         text-align: center;
@@ -75,15 +73,15 @@
 
         <p>Greetings!!!</p>
 
-        <p>Thank you for taking the initiative to submit your details and express your interest in joining the Agro
-            Hi-tech Chemicals.</p>
+        <p>Thank you for taking the initiative to submit your details and express your interest in joining the Radha
+            Seeds.</p>
 
         <p>Our team will carefully review your information, and if your qualifications align with our current
             opportunities, we will reach out to you for the next steps in the hiring process. Please be assured that
             your application is important to us, and we value the potential contributions you could bring to our
             organization.</p>
 
-        <p>In the meantime, feel free to explore more about Agro Hi-tech Chemicals on our website or connect with us on
+        <p>In the meantime, feel free to explore more about Radha Seeds on our website or connect with us on
             social media
             pages to stay updated on our latest news and developments.</p>
 
@@ -92,14 +90,14 @@
 
 
         <p>Thanks,</p>
-        <p>Team Agro Hi-tech Chemicals</p>
+        <p>Team Radha Seeds</p>
 
-        <p>Website: <a href="https://www.agrohitechchemicals.com">https://www.agrohitechchemicals.com/</a></p>
+        <p>Website: <a href="https://www.radhaseeds.com">https://www.radhaseeds.com/</a></p>
     </div>
 
     <footer>
         <div class="container">
-            <p><strong>&copy; {{ date('Y') }} Agro Hi-tech Chemicals</strong></p>
+            <p><strong>&copy; {{ date('Y') }}Radha Seeds</strong></p>
         </div>
     </footer>
 

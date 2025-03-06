@@ -53,7 +53,7 @@ class BlogsController extends Controller
             'meta_description' => 'string|nullable',
             'page_schema' => 'string|nullable',
             'og_code' => 'string|nullable',
-            'image' => 'required|image|mimes:jpg,jpeg,png',
+            'image_thumb' => 'required|image|mimes:jpg,jpeg,png,webp',
         ]);
 
         $requireData = $request->except(['_token']);
@@ -63,11 +63,7 @@ class BlogsController extends Controller
         $requireData['slug'] = $slug;
         $requireData['user_id'] = Auth::user()->id;
 
-        if (!empty($request->image)) {
-            $imageName = 'Bi_' . time() . '.' . $request->image->extension();
-            $request->image->move(public_path('blogs-images/'), $imageName);
-            $requireData['image'] = $imageName;
-        }
+
 
         if (!empty($request->image_thumb)) {
             $image_thumbName = 'Bi_' . time() . '.' . $request->image_thumb->extension();
@@ -124,7 +120,6 @@ class BlogsController extends Controller
             'meta_description' => 'string|nullable',
             'page_schema' => 'string|nullable',
             'og_code' => 'string|nullable',
-            'image' => 'image|mimes:jpg,jpeg,png',
             'image_thumb' => 'image|mimes:jpg,jpeg,png',
         ]);
         $blog->name = $request->name ?? $blog->name;
@@ -168,27 +163,7 @@ class BlogsController extends Controller
             $blog->image_thumb = $request->image_thumb ?? $request->old_thumb_img;
         }
 
-        if ($request->hasFile('image')) {
-            // If a new image has been uploaded, process it
-            $imageName = 'Bi_' . time() . '.' . $request->image->extension();
-            $request->image->move(public_path('blogs-images/'), $imageName);
 
-            // Remove old image
-            $existingImage = $request->old_img;
-
-            if (!empty($existingImage)) {
-                $imagePath = public_path("blogs-images/{$existingImage}");
-
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
-                }
-            }
-
-            $blog->image = $imageName;
-        } else {
-            // If no new image is uploaded, retain the existing or fallback to a default
-            $blog->image = $request->image ?? $request->old_img;
-        }
 
         $blog->save();
         return redirect()->route('admin.blogs.index')->with('success', 'Blogs updated Successfully.');

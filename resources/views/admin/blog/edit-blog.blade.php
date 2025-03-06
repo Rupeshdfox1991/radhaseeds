@@ -66,7 +66,7 @@
                                 <div class="row col-md-12">
                                     <div class="form-group col-md-4 mb-3">
                                         <label for="exampleInputFile">Blog Thumbnail Image<span class="error">*</span>
-                                            (600x460 pixels)</label>
+                                            (1000x618 pixels)</label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="exampleInputFile"
@@ -97,41 +97,6 @@
                                         <input type="text" class="form-control" value="{{ $blog->image_thumb_alt_tag }}"
                                             id="image_thumb_alt_tag" name="image_thumb_alt_tag"
                                             placeholder="Enter image alt tag ">
-                                    </div>
-                                </div>
-
-                                <div class="row col-md-12">
-                                    <div class="form-group col-md-4 mb-3">
-                                        <label for="exampleInputFile">Blog Detail Page Image<span
-                                                class="error">*</span>(800x477 pixels)</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile1"
-                                                    name="image" onchange="previewImage1(this);">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose
-                                                    file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                        </div>
-                                        <div id="imagePreview1" class="mt-2"
-                                            style="height: 100px; width: 100px; border: 1px solid #ccc; padding: 4px;">
-                                            <img src="{{ asset('blogs-images/' . $blog->image) }}" class="img-fluid"
-                                                alt="Preview">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-4 mb-3">
-                                        <label for="text">Image Title tag</label>
-                                        <input type="text" class="form-control" value="{{ $blog->title_tag }}"
-                                            id="title_tag" name="title_tag" placeholder="Enter Image Title Tag">
-                                    </div>
-
-                                    <div class="form-group col-md-4 mb-3">
-                                        <label for="text">Image alt tag</label>
-                                        <input type="text" class="form-control" value="{{ $blog->alt_tag }}"
-                                            id="alt_tag" name="alt_tag" placeholder="Enter image alt tag ">
                                     </div>
                                 </div>
 
@@ -217,7 +182,7 @@ function previewImage(input) {
 
         img.onload = function() {
             // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 600 && img.height === 460) {
+            if (img.width === 1000 && img.height === 618) {
                 preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
             } else {
                 Swal.fire('Please upload an image with dimensions 600x460 pixels.');
@@ -233,32 +198,7 @@ function previewImage(input) {
     }
 }
 
-function previewImage1(input) {
-    var preview = document.getElementById('imagePreview1');
-    var file = input.files[0];
-    var reader = new FileReader();
 
-    reader.onloadend = function() {
-        var img = new Image();
-        img.src = reader.result;
-
-        img.onload = function() {
-            // Check if the uploaded image dimensions match the required size (100x100 pixels)
-            if (img.width === 800 && img.height === 477) {
-                preview.innerHTML = '<img src="' + reader.result + '" style="width: 100%; height: 100%;">';
-            } else {
-                Swal.fire('Please upload an image with dimensions 800x477 pixels.');
-                // Reset the file input
-                input.value = '';
-                preview.innerHTML = '';
-            }
-        };
-    };
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
 
 $('#editBlog').validate({
     rules: {

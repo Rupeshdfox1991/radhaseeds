@@ -26,7 +26,7 @@
     }
 
     header {
-        background: linear-gradient(to right, #007bff, #00c49a);
+        background: #00c49a;
         color: #ffffff;
         padding: 20px 0;
         text-align: center;
@@ -49,7 +49,7 @@
     }
 
     footer {
-        background: linear-gradient(to right, #007bff, #00c49a);
+        background: #00c49a;
         color: #ffffff;
         padding: 10px 0;
         text-align: center;
@@ -77,7 +77,7 @@
 
     <footer>
         <div class="container">
-            <p><strong>&copy; {{ date('Y') }} Agro Hi-tech Chemicals</strong></p>
+            <p><strong>&copy; {{ date('Y') }} Radha Seeds</strong></p>
         </div>
     </footer>
 

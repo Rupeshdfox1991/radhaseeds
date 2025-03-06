@@ -100,29 +100,29 @@ Route::group(['middleware' => ['checkRoles']], function () {
 });
 
 
-// Route::post('/product-enquiry/store', [SiteController::class, 'productEnquirystore'])->name('product-enquiry-store');
-// //product filter
-// Route::get('/products-filter', [SiteController::class, 'filter'])->name('products-filter');
-// Route::get('/get-subcategory', [SiteController::class, 'getsubcategoryPaginationData'])->name('get-subcategory');
+Route::post('/product-enquiry/store', [SiteController::class, 'productEnquirystore'])->name('product-enquiry-store');
+//product filter
+Route::get('/products-filter', [SiteController::class, 'filter'])->name('products-filter');
+Route::get('/get-subcategory', [SiteController::class, 'getsubcategoryPaginationData'])->name('get-subcategory');
 
-// Route::get('/get-productlisting', [SiteController::class, 'getproductlistingPaginationData']);
+Route::get('/get-productlisting', [SiteController::class, 'getproductlistingPaginationData']);
 
-// Route::get('/thank-you', [SiteController::class, 'thank_you'])->name('thank-you');
+Route::get('/thank-you', [SiteController::class, 'thank_you'])->name('thank-you');
 
-// Route::get('/downloads', [SiteController::class, 'downloads']);
+Route::get('/downloads', [SiteController::class, 'downloads']);
 
-// //frontend route
+//frontend route
 
-// Route::get('/', [SiteController::class, 'index']);
-// Route::get('/about-us', [SiteController::class, 'aboutUs'])->name('about');
-// Route::get('/products/product-category', [SiteController::class, 'productCategory'])->name('product-category');
-// Route::get('/products/{slug?}', [SiteController::class, 'productListing'])->name('product-listing');
-// Route::get('/product/{slug}', [SiteController::class, 'productDetails'])->name('product-details');
-// Route::get('/gallery', [SiteController::class, 'gallery'])->name('gallery');
-// Route::get('/gallery-details/{slug}', [SiteController::class, 'galleryDetails'])->name('gallery-details');
-// Route::get('/blog', [SiteController::class, 'blog'])->name('blogs');
-// Route::get('/blog/{slug}', [SiteController::class, 'blog_details'])->name('blog-details');
-// Route::get('/careers', [SiteController::class, 'careers'])->name('careers');
-// Route::post('/careers', [SiteController::class, 'submitCareersForm'])->name('submit-careers');
-// Route::get('/contact-us', [SiteController::class, 'contact_us'])->name('contact-us');
-// Route::post('/contact-us', [SiteController::class, 'submitContactForm'])->name('contact-submit');
+Route::get('/', [SiteController::class, 'index']);
+Route::get('/about-us', [SiteController::class, 'aboutUs'])->name('about');
+Route::get('/products/product-category', [SiteController::class, 'productCategory'])->name('product-category');
+Route::get('/products/{slug?}', [SiteController::class, 'productListing'])->name('product-listing');
+Route::get('/product/{slug}', [SiteController::class, 'productDetails'])->name('product-details');
+Route::get('/gallery', [SiteController::class, 'gallery'])->name('gallery');
+Route::get('/gallery-details/{slug}', [SiteController::class, 'galleryDetails'])->name('gallery-details');
+Route::get('/blog', [SiteController::class, 'blog'])->name('blogs');
+Route::get('/blog/{slug}', [SiteController::class, 'blog_details'])->name('blog-details');
+Route::get('/careers', [SiteController::class, 'careers'])->name('careers');
+Route::post('/careers', [SiteController::class, 'submitCareersForm'])->name('submit-careers');
+Route::get('/contact-us', [SiteController::class, 'contact_us'])->name('contact-us');
+Route::post('/contact-us', [SiteController::class, 'submitContactForm'])->name('contact-submit');

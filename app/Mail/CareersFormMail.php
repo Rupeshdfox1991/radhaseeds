@@ -32,7 +32,7 @@ class CareersFormMail extends Mailable
     {
 
         return $this->from($this->data['email'], explode(' ', $this->data['name'])[0])
-            ->subject('Agro Hi-Techchemicals - Inquiry')
+            ->subject('Radha Seeds - Career Inquiry')
             ->view('emails.careers-form', ['data' => $this->data])
             ->attach($this->data['file']->getRealPath(), [
                 'as' => $this->data['file']->getClientOriginalName(),
