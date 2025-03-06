@@ -259,6 +259,13 @@ body { font-family: 'Poppins', sans-serif;}
 .contact-us-first .career-para h2{font-size: 26px; font-weight: 600; margin-bottom: 20px; color: #46cc63;}
 .contact-us-first .career-para p{font-size: 16px; line-height: 26px; }
 
+.thank-you{ background: url(../images/thank-you-bg.png) no-repeat center top; background-size: cover; width: 100%; position: relative; padding: 40px 0 0 0; }
+.thank-you-content{border: 1px solid #30a849; border-radius: 10px; padding: 30px; margin-bottom: 30px;}
+.thank-you-content h3{ font-size: 20px; font-weight: 600; margin-bottom: 15px; } 
+.thank-you-content p{font-size: 16px; line-height: 26px; margin-bottom: 20px; font-weight: 500;}
+.thank-you-content a{color: #30a849; font-weight: 700;}
+.thank-you-content img{margin-bottom: 20px;}
+
 @media screen and (max-width: 600px) { 
   .blog-details .detail-content table { border: 0; } 
   .blog-details .detail-content table caption { font-size: 1.3em; } 

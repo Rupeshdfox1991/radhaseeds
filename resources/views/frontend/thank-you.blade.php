@@ -20,21 +20,19 @@
 <section class="thank-you">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <div class="thank-you-pane">
-                    <p>Dear <b>Customer</b>,</p>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xl-8 offset-xl-2">
+                <div class="thank-you-content">
+                    <img src="{{ asset('frontend_assets/images/chk-mark.png')}}" alt="Thank You">
+                    <h3>Dear Customer,</h3>
                     <p>We have received your details, and our team shall connect with you shortly with the required
                         information.</p>
-
                     <p>If you have any immediate questions, please don't hesitate to reach out to us at <a
-                            target="_blank" href="mailto:agrohitechc3@gmail.com">agrohitechc3@gmail.com</a> OR
-                        via WhatsApp at <a target="_blank" href="https://wa.me/9422875726">+91-9422875726</a>.</p>
-
+                            href="mailto:agrohitechc3@gmail.com">agrohitechc3@gmail.com</a> OR via WhatsApp at <a
+                            href="https://api.whatsapp.com/send?phone=919422875726&amp;text=Hello Team Agro Hi-Tech Chemicals">+91
+                            94228 75726</a></p>
                     <p>We are here to assist you and guide you through every step of your journey with us.</p>
-
-                    <p>Thanks,</p>
-                    <p>Team Radha Seeds</p>
-
+                    <p><strong>Thanks,<br>
+                            Team Radha Seeds</strong></p>
                 </div>
             </div>
         </div>
