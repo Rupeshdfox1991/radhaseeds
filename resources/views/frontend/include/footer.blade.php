@@ -21,12 +21,12 @@
                     <div class="quick-links">
                         <h3>Quick links</h3>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Blogs</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ route('about')  }}">About Us</a></li>
+                            <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                            <li><a href="{{ route('careers') }}">Careers</a></li>
+                            <li><a href="{{ route('blogs') }}">Blogs</a></li>
+                            <li><a href="{{ route('contact-us')}}">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="quick-links">
